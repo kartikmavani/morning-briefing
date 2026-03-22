@@ -3,6 +3,7 @@ This is an AI powered morning breifing system. It will fetch the latest news fro
 ## Tech Stack
 
 Python
+langchain for orchestration
 Ollama for LLM
 Postgres for database
 Streamlit for UI
