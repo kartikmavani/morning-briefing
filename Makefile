@@ -1,4 +1,4 @@
-.PHONY: setup db-up db-down run clean
+.PHONY: setup db-up db-down run clean test
 
 # Install dependencies using uv
 setup:
@@ -19,3 +19,7 @@ run: db-up
 # Clean up
 clean: db-down
 	rm -rf .venv
+
+# Run the Pytest evaluation suite isolated from local cached files
+test:
+	uv run pytest tests/
