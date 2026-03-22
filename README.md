@@ -134,6 +134,21 @@ AppSettings (pydantic .env)
 
 All services are registered as **singletons** in `core/container.py` and are instantiated exactly once per application lifecycle.
 
+### Pipeline Flow
+
+```mermaid
+flowchart TD
+    A["👤 User defines topics\ne.g. AI, Gold, War"] --> B["main.py\nOrchestration Loop"]
+    B --> C["LangChain ReAct Agent\nLlmService"]
+    C -->|"Tool call: search_news_from_web"| D["TavilyService\n🌐 Web Search API"]
+    D -->|"Raw news articles"| C
+    C -->|"Summarise & script"| E["Ollama LLM\nqwen3:8b — local"]
+    E -->|"Podcast script"| C
+    C -->|"Final script"| F["AudioService\nmacOS say CLI"]
+    F --> G["🔊 .aiff podcast file\noutput/"]
+    H["PostgreSQL\nLangGraph Checkpointer"] <-->|"Agent state persistence"| C
+```
+
 ---
 
 ## 🧪 Testing
