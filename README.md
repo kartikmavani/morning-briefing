@@ -154,7 +154,7 @@ The test suite uses `pytest` + `pytest-mock` to mock all external I/O — no rea
 
 ---
 ## 📟 Sample Output
-
+```
 2026-03-22 17:35:19,528 - __main__ - INFO - Fetching news for topic: Gold and Silver
 2026-03-22 17:35:21,480 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 2026-03-22 17:35:32,120 - service.TaviliyService - INFO - Searching for news about Gold and Silver from 2026-03-21 to 2026-03-22
@@ -184,7 +184,7 @@ That’s it for today! The gold and silver markets remain volatile, with both sh
 *End of Episode.*
 2026-03-22 17:36:30,105 - service.AudioService - INFO - Synthesizing script to output/gold_and_silver_briefing.aiff...
 2026-03-22 17:36:48,551 - service.AudioService - INFO - ✅ Podcast generated successfully: output/gold_and_silver_briefing.aiff
-
+```
 
 ## 📄 License
 
