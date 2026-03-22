@@ -5,13 +5,22 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "dependency-injector>=4.48.3",
     "langchain>=1.2.13",
+    "langchain-ollama>=1.0.1",
+    "langgraph-checkpoint-postgres>=3.0.5",
     "ollama>=0.6.1",
+    "psycopg>=3.3.3",
+    "psycopg-binary>=3.3.3",
+    "psycopg-pool>=3.3.0",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.13.1",
     "python-dotenv>=1.2.2",
-    "streamlit>=1.55.0",
+    "tavily-python>=0.7.23",
 ]
 
 [dependency-groups]
 dev = [
     "pytest>=9.0.2",
+    "pytest-mock>=3.15.1",
 ]
