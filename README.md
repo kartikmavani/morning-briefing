@@ -103,20 +103,27 @@ This command will:
 
 ```
 morning-briefing/
-├── main.py                   # CLI entrypoint & orchestration loop
+├── main.py                         # CLI entrypoint & orchestration loop
 ├── config/
-│   └── settings.py           # Pydantic typed env config
+│   └── AppSettings.py              # Pydantic typed env config
 ├── core/
-│   └── container.py          # IoC DI container (all singletons)
+│   └── ApplicationContainer.py    # IoC DI container (all singletons)
+├── llm/                            # LLM-related utilities & prompts
 ├── service/
-│   ├── DatabaseService.py    # Postgres pool + LangGraph checkpointer
-│   ├── LlmService.py         # Ollama LLM + ReAct news agent
-│   ├── TaviliyService.py     # Tavily web search tool
-│   └── AudioService.py       # macOS TTS speech synthesizer
-├── tests/                    # PyTest unit test suite
-├── docker-compose.yml        # Local PostgreSQL container definition
-├── Makefile                  # Developer workflow commands
-└── output/                   # Generated .aiff podcast audio files
+│   ├── DatabaseService.py          # Postgres pool + LangGraph checkpointer
+│   ├── LlmService.py               # Ollama LLM + ReAct news agent
+│   ├── TaviliyService.py           # Tavily web search tool
+│   └── AudioService.py             # macOS TTS speech synthesizer
+├── tests/                          # PyTest unit test suite
+│   ├── conftest.py                 # Shared fixtures
+│   ├── test_audio_service.py
+│   ├── test_container.py
+│   ├── test_database_service.py
+│   ├── test_llm_service.py
+│   └── test_tavily_service.py
+├── docker-compose.yml              # Local PostgreSQL container definition
+├── Makefile                        # Developer workflow commands
+└── output/                         # Generated .aiff podcast audio files
 ```
 
 ### Dependency Injection Flow
