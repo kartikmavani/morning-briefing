@@ -1,7 +1,7 @@
 import logging
 from langgraph.checkpoint.postgres import PostgresSaver
 from psycopg_pool import ConnectionPool
-from config.settings import AppSettings
+from config.AppSettings import AppSettings
 
 logger = logging.getLogger(__name__)
 

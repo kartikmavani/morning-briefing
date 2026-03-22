@@ -1,7 +1,7 @@
 import logging
 from tavily import TavilyClient
 from langchain.tools import tool
-from config.settings import AppSettings
+from config.AppSettings import AppSettings
 
 logger = logging.getLogger(__name__)
 

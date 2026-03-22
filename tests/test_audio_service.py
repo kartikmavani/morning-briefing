@@ -1,6 +1,6 @@
 import pytest
 from service.AudioService import AudioService
-from config.settings import AppSettings
+from config.AppSettings import AppSettings
 import subprocess
 
 def test_audio_service_generation(mocker):

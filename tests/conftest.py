@@ -1,5 +1,5 @@
 import pytest
-from config.settings import AppSettings
+from config.AppSettings import AppSettings
 
 @pytest.fixture
 def mock_settings():

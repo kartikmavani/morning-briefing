@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-from core.container import ApplicationContainer
+from core.ApplicationContainer import ApplicationContainer
 
 def init_container():
     """ Bootstraps the DI container exactly once for the script lifecycle. """

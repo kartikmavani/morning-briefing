@@ -5,7 +5,7 @@ from service.LlmService import LlmService
 from service.DatabaseService import DatabaseService
 from service.TaviliyService import TavilyService
 from service.AudioService import AudioService
-from config.settings import AppSettings
+from config.AppSettings import AppSettings
 
 class ApplicationContainer(containers.DeclarativeContainer):
     """ Central IoC Container holding all singletons """

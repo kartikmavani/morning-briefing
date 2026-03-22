@@ -2,7 +2,7 @@ import logging
 from dependency_injector import containers, providers
 from service.DatabaseService import DatabaseService
 from service.TaviliyService import TavilyService
-from config.settings import AppSettings
+from config.AppSettings import AppSettings
 from langchain.chat_models import init_chat_model
 from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage

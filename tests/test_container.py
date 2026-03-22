@@ -1,6 +1,6 @@
 import pytest
-from core.container import ApplicationContainer
-from config.settings import AppSettings
+from core.ApplicationContainer import ApplicationContainer
+from config.AppSettings import AppSettings
 from service.AudioService import AudioService
 
 def test_container_dependency_resolution(mocker):
