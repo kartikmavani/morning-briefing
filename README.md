@@ -1,6 +1,7 @@
 # 🌅 Morning Briefing AI
 
-A fully local AI-powered podcast generator that fetches news for topics you care about and reads them aloud to you every morning — privately, using **no cloud AI services**.
+## Stateful Local AI Agent for Autonomous News Orchestration
+Morning Briefing AI is a robust, locally hosted agentic pipeline designed to fetch, synthesize, and narrate news. Unlike standard LLM scripts, this system utilizes a stateful Graph-based architecture and Inversion of Control (IoC) to ensure modularity, durability, and privacy.
 
 ---
 
@@ -12,6 +13,46 @@ A fully local AI-powered podcast generator that fetches news for topics you care
 4. **Audio Synthesis**: The finished podcast script is fed directly into macOS's built-in neural TTS engine (`say`), producing a high-quality `.aiff` audio file per topic in the `output/` folder.
 
 ---
+## 🏗 Architectural Philosophy
+The system is built on four core engineering pillars:
+
+**Stateful Agentic Execution**: Leveraging LangGraph, the system maintains an execution state persisted in a local PostgreSQL instance. This allows for interruptible and resumable workflows, providing a foundation for long-running agentic tasks.
+
+**Inversion of Control (IoC)**: Utilizing a centralized Dependency Injection container (ApplicationContainer), all services (LLM, Database, Audio) are managed as singletons. This facilitates clean unit testing and simplifies the swapping of providers (e.g., migrating from Ollama to OpenAI).
+
+**Local-First / Zero-Cloud**: To ensure maximum data privacy and zero inference costs, the summarization and Text-to-Speech (TTS) layers run entirely on local hardware using Ollama and native macOS APIs.
+
+**Operational Excellence**: The project enforces a strict separation of concerns between the Orchestration Layer (LangChain/Graph) and the Service Layer (Tavily/Audio/DB).
+
+
+---
+
+## 🛠 Technical Deep Dive
+
+**State Management & Persistence**
+The system treats every "briefing" as a stateful session.
+
+**Checkpointing**: By integrating a PostgresSaver, the agent can recover from mid-flight failures without re-running expensive web search operations.
+
+**Tool Calling**: Implements a ReAct (Reasoning and Acting) loop where the LLM (Qwen3:8b) autonomously determines search parameters based on user-defined topics.
+
+**Service Layer Resilience**: Tavily Search: Abstracted behind a service layer to handle rate limiting and input sanitization before passing data to the LLM.
+
+**Audio Synthesis**: Uses a non-blocking subprocess implementation of the macOS say utility, allowing for asynchronous audio generation of multiple topic briefings.
+
+---
+
+## ⚖️ Design Decisions & Trade-offs
+
+| Choice | Justification | Trade-off |
+|---|---|---|
+| **PostgreSQL vs SQLite** | Chose Postgres via Docker to mirror production-grade environments and support high-concurrency connection pooling. | Higher local resource overhead compared to a flat-file DB. |
+| **LangGraph vs Linear Chain** | Graph architecture allows for future "Human-in-the-loop" interventions and cyclical reasoning (re-searching if results are poor). | Increased complexity in the orchestration loop logic. |
+| **Ollama (Local) vs GPT-4** | Prioritized privacy and zero-cost over the higher reasoning capabilities of cloud-hosted models. | Local models (8B-class) require more precise prompt engineering to avoid hallucinations. |
+| **uv vs pip/poetry** | Adopted uv for sub-second virtual environment resolution and deterministic builds. | Newer ecosystem with less legacy CI/CD integration. |
+
+---
+
 
 ## 🔧 Prerequisites
 
@@ -209,9 +250,11 @@ That’s it for today! The gold and silver markets remain volatile, with both sh
 ```
 ## Roadmap & Future Explorations
 
-[ ] Vector Database Integration: Incorporate ChromaDB to allow the agent to "remember" previous briefings and provide week-over-week trend analysis.
+[ ] Vector Memory (ChromaDB): Transition from simple state persistence to long-term "Episodic Memory" to enable cross-briefing trend analysis.
 
-[ ] Voice Cloning: Integrate F5-TTS for personalized voice synthesis.
+[ ] Agentic Evaluation: Implement RAGAS or G-Eval metrics to programmatically score the accuracy of summarized news scripts.
+
+[ ] Multi-Agent Collaboration: Introduce a "Researcher" agent and an "Editor" agent to improve script quality through iterative review.
 
 ## 📄 License
 
