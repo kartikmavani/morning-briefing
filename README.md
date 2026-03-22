@@ -1,7 +1,7 @@
-# 🌅 Morning Briefing AI
+# 🌅 Agentic News Engine
 
 ## Stateful Local AI Agent for Autonomous News Orchestration
-Morning Briefing AI is a robust, locally hosted agentic pipeline designed to fetch, synthesize, and narrate news. Unlike standard LLM scripts, this system utilizes a stateful Graph-based architecture and Inversion of Control (IoC) to ensure modularity, durability, and privacy.
+Agentic News Engine is a robust, locally hosted agentic pipeline designed to fetch, synthesize, and narrate news. Unlike standard LLM scripts, this system utilizes a stateful Graph-based architecture and Inversion of Control (IoC) to ensure modularity, durability, and privacy.
 
 ---
 
@@ -78,9 +78,9 @@ ollama pull qwen3:8b
 
 ### 2. Clone & Install
 ```bash
-git clone git@github.com:kartikmavani/morning-briefing.git
+git clone git@github.com:kartikmavani/agentic-news-engine.git
 
-cd morning-briefing
+cd agentic-news-engine
 
 # Install all Python dependencies
 make setup
@@ -144,7 +144,7 @@ This command will:
 ### Project Structure
 
 ```
-morning-briefing/
+agentic-news-engine/
 ├── main.py                         # CLI entrypoint & orchestration loop
 ├── config/
 │   └── AppSettings.py              # Pydantic typed env config
