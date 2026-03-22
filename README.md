@@ -185,6 +185,11 @@ That’s it for today! The gold and silver markets remain volatile, with both sh
 2026-03-22 17:36:30,105 - service.AudioService - INFO - Synthesizing script to output/gold_and_silver_briefing.aiff...
 2026-03-22 17:36:48,551 - service.AudioService - INFO - ✅ Podcast generated successfully: output/gold_and_silver_briefing.aiff
 ```
+## Roadmap & Future Explorations
+
+[ ] Vector Database Integration: Incorporate ChromaDB to allow the agent to "remember" previous briefings and provide week-over-week trend analysis.
+
+[ ] Voice Cloning: Integrate F5-TTS for personalized voice synthesis.
 
 ## 📄 License
 
